@@ -1,1 +1,10 @@
-<p>hello</p>
+<h1>My Ponies</h1>
+<ul>
+  @foreach (var pony in Model)
+  {
+    <li><a href='/inventory/@pony.GetId()'>@pony.GetName()</a></li>
+  }
+</ul>
+
+
+<a href="/">Add another pony</a>

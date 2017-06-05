@@ -69,6 +69,7 @@ namespace Inventory.Objects
     // }
     public static List<MyLittlePony> GetAll()
     {
+      Console.WriteLine("beginning");
       List<MyLittlePony> allMyLittlePonies = new List<MyLittlePony>{};
 
       SqlConnection conn = DB.Connection();
@@ -76,6 +77,8 @@ namespace Inventory.Objects
 
       SqlCommand cmd = new SqlCommand("SELECT * FROM my_little_pony;", conn);
       SqlDataReader rdr = cmd.ExecuteReader();
+
+      Console.WriteLine("middle");
 
       while(rdr.Read())
       {
@@ -86,6 +89,8 @@ namespace Inventory.Objects
         MyLittlePony newMyLittlePony = new MyLittlePony(myLittlePonyName, myLittlePonyColor, myLittlePonyId);
         allMyLittlePonies.Add(newMyLittlePony);
       }
+
+      Console.WriteLine("end");
 
       if (rdr != null)
       {
