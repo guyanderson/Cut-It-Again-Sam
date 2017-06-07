@@ -5,11 +5,11 @@ using System.Data;
 using System.Data.SqlClient;
 using Inventory.Objects;
 
-namespace !!!!!
+namespace BestRestaurant
 {
-  public class !!!!Test : IDisposable
+  public class CuisineTest : IDisposable
   {
-    public !!!!Test()
+    public CuisineTest()
 
   }
 }

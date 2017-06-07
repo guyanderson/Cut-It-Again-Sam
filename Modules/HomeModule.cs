@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using !!!!
 using System;
 
-namespace !!!!!!
+namespace BestRestaurant
 {
   public class HomeModule : NancyModule
   {
