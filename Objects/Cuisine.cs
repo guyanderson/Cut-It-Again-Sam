@@ -79,6 +79,7 @@ namespace BestRestaurant
       else
       {
         Cuisine newCuisine = (Cuisine) otherCuisine;
+        bool idEquality = (this.GetId() == newCuisine.GetId());
         bool nameEquality = (this.GetName() == newCuisine.GetName());
         return (nameEquality);
       }
