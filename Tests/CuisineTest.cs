@@ -67,6 +67,20 @@ namespace BestRestaurant
     Assert.Equal(testId, result);
     }
 //==========================================================
+    [Fact]
+    public void Find_FindsTaskInDatabase_True()
+    {
+    //Arrange
+    Cuisine testCuisine = new Cuisine("Italian");
+    testCuisine.Save();
+
+    //Act
+    Cuisine foundCuisine = Cuisine.Find(testCuisine.GetId());
+
+    //Assert
+    Assert.Equal(testCuisine, foundCuisine);
+    }
+//==========================================================
     public void Dispose()
     {
      Cuisine.DeleteAll();
