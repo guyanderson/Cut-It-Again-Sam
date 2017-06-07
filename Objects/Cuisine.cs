@@ -70,5 +70,19 @@ namespace BestRestaurant
       conn.Close();
     }
 //============================================
+    public override bool Equals(System.Object otherCuisine)
+    {
+      if (!(otherCuisine is Cuisine))
+      {
+        return false;
+      }
+      else
+      {
+        Cuisine newCuisine = (Cuisine) otherCuisine;
+        bool nameEquality = (this.GetName() == newCuisine.GetName());
+        return (nameEquality);
+      }
+    }
+//============================================
   }
 }

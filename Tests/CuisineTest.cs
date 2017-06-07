@@ -24,6 +24,17 @@ namespace BestRestaurant
       Assert.Equal(0, result);
     }
 //==========================================================
+    [Fact]
+    public void Test_Equal_ReturnsTrueIfNamesAreTheSame()
+    {
+      //Arrange, Act
+      Cuisine firstCuisine = new Cuisine("Italian");
+      Cuisine secondCuisine = new Cuisine("Italian");
+
+      //Assert
+      Assert.Equal(firstCuisine, secondCuisine);
+    }
+//==========================================================
     public void Dispose()
     {
      Cuisine.DeleteAll();
