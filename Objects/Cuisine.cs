@@ -8,11 +8,13 @@ namespace BestRestaurant
   {
     private int _id;
     private string _name;
+    private int _restaurantId;
 //===========================================
-    public Cuisine(string Name, int Id = 0)
+    public Cuisine(string Name, int RestaurantId, int Id = 0)
     {
       _id = Id;
       _name = Name;
+      _restaurantId = RestaurantId;
     }
 //===========================================
     public int GetId()
@@ -29,6 +31,16 @@ namespace BestRestaurant
     {
       _name =newName;
     }
+//============================================
+    public int GetRestaurantId()
+    {
+      return _restaurantId;
+    }
+//===========================================
+    public void SetRestaurantId(int newRestaurantId)
+    {
+      _restaurantId = newRestaurantId;
+    }
 //===========================================
     public static List<Cuisine> GetAll()
     {
@@ -44,7 +56,8 @@ namespace BestRestaurant
       {
         int cuisineId = rdr.GetInt32(0);
         string cuisineName = rdr.GetString(1);
-        Cuisine newCuisine = new Cuisine(cuisineName, cuisineId);
+        int cuisineRestaurantId = rdr.GetInt32(2);
+        Cuisine newCuisine = new Cuisine(cuisineName, cuisineRestaurantId, cuisineId);
         allCuisine.Add(newCuisine);
       }
 
@@ -81,6 +94,7 @@ namespace BestRestaurant
         Cuisine newCuisine = (Cuisine) otherCuisine;
         bool idEquality = (this.GetId() == newCuisine.GetId());
         bool nameEquality = (this.GetName() == newCuisine.GetName());
+        bool restaurantEquality = (this.GetRestaurantId() == newCuisine.GetRestaurantId());
         return (nameEquality);
       }
     }
@@ -90,12 +104,19 @@ namespace BestRestaurant
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO cuisineTable (name) OUTPUT INSERTED.id VALUES (@CuisineName);", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO cuisineTable (name, restaurant_id) OUTPUT INSERTED.id VALUES (@CuisineName, @CuisineRestaurantId);", conn);
 
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@CuisineName";
       nameParameter.Value = this.GetName();
+
+      SqlParameter restaurantIdParameter = new SqlParameter();
+      restaurantIdParameter.ParameterName = "@CuisineRestaurantId";
+      restaurantIdParameter.Value = this.GetRestaurantId();
+
       cmd.Parameters.Add(nameParameter);
+      cmd.Parameters.Add(restaurantIdParameter);
+
       SqlDataReader rdr = cmd.ExecuteReader();
 
       while(rdr.Read())
@@ -126,10 +147,13 @@ namespace BestRestaurant
 
       int foundCuisineId = 0;
       string foundCuisineName = null;
+      int foundCuisineRestaurantId = 0;
+
       while(rdr.Read())
       {
         foundCuisineId = rdr.GetInt32(0);
         foundCuisineName = rdr.GetString(1);
+        foundCuisineRestaurantId = rdr.GetInt32(2);
       }
       Cuisine foundCuisine = new Cuisine(foundCuisineName, foundCuisineId);
 

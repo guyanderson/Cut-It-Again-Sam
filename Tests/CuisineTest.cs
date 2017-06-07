@@ -28,8 +28,8 @@ namespace BestRestaurant
     public void Test_Equal_ReturnsTrueIfNamesAreTheSame()
     {
       //Arrange, Act
-      Cuisine firstCuisine = new Cuisine("Italian");
-      Cuisine secondCuisine = new Cuisine("Italian");
+      Cuisine firstCuisine = new Cuisine("Italian", 1);
+      Cuisine secondCuisine = new Cuisine("Italian", 1);
 
       //Assert
       Assert.Equal(firstCuisine, secondCuisine);
@@ -39,7 +39,7 @@ namespace BestRestaurant
     public void Test_Save_SavesToDatabase()
     {
     //Arrange
-      Cuisine testCuisine = new Cuisine("Italian");
+      Cuisine testCuisine = new Cuisine("Italian", 1);
 
     //Act
     testCuisine.Save();
@@ -54,7 +54,7 @@ namespace BestRestaurant
     public void Test_Save_AssignsIdToObject()
     {
     //Arrange
-    Cuisine testCuisine = new Cuisine("Italian");
+    Cuisine testCuisine = new Cuisine("Italian", 1);
 
     //Act
     testCuisine.Save();
@@ -71,7 +71,7 @@ namespace BestRestaurant
     public void Find_FindsTaskInDatabase_True()
     {
     //Arrange
-    Cuisine testCuisine = new Cuisine("Italian");
+    Cuisine testCuisine = new Cuisine("Italian", 1);
     testCuisine.Save();
 
     //Act
