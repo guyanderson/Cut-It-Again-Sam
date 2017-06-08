@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using Cuisine_Object;
+using BestRestaurant;
 
-
-namespace BestRestaurant
+namespace CuisineTest_Test
 {
   public class CuisineTest : IDisposable
   {

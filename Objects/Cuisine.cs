@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System;
+using BestRestaurant;
 
-namespace BestRestaurant
+namespace Cuisine_Object
 {
   public class Cuisine
   {
@@ -90,11 +91,12 @@ namespace BestRestaurant
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO cuisineTable (name,) OUTPUT INSERTED.id VALUES (@CuisineName),", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO cuisineTable (name) OUTPUT INSERTED.id VALUES (@CuisineName)", conn);
 
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@CuisineName";
       nameParameter.Value = this.GetName();
+      cmd.Parameters.Add(nameParameter);
 
       SqlDataReader rdr = cmd.ExecuteReader();
 
