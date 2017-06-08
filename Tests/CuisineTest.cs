@@ -81,17 +81,6 @@ namespace BestRestaurant
       Assert.Equal(testCuisine, foundCuisine);
     }
 //==========================================================
-    // [Fact]
-    // public void GetCuisine_RetrievesAllCuisineWithRestaurant()
-    // {
-    //   Restaurant testRestaurant = new Restaurant("Pastini");
-    //   testRestaurant.Save();
-    //
-    //   Cuisine firstCuisine = new Cuisine("Italian", testRestaurant.GetId());
-    //   firstCuisine.Save();
-    //   Cuisine secondCuisine = new Cuisine("Mexican")
-    // }
-//==========================================================
     public void Dispose()
     {
       Cuisine.DeleteAll();
