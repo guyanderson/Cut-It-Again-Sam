@@ -28,8 +28,8 @@ namespace BestRestaurant
     public void Test_Equal_ReturnsTrueIfNamesAreTheSame()
     {
       //Arrange, Act
-      Cuisine firstCuisine = new Cuisine("Italian", 1);
-      Cuisine secondCuisine = new Cuisine("Italian", 1);
+      Cuisine firstCuisine = new Cuisine("Italian");
+      Cuisine secondCuisine = new Cuisine("Italian");
 
       //Assert
       Assert.Equal(firstCuisine, secondCuisine);
@@ -38,52 +38,63 @@ namespace BestRestaurant
     [Fact]
     public void Test_Save_SavesToDatabase()
     {
-    //Arrange
-      Cuisine testCuisine = new Cuisine("Italian", 1);
+      //Arrange
+      Cuisine testCuisine = new Cuisine("Italian");
 
-    //Act
-    testCuisine.Save();
-    List<Cuisine> result = Cuisine.GetAll();
-    List<Cuisine> testList = new List<Cuisine>{testCuisine};
+      //Act
+      testCuisine.Save();
+      List<Cuisine> result = Cuisine.GetAll();
+      List<Cuisine> testList = new List<Cuisine>{testCuisine};
 
-    //Assert
-    Assert.Equal(testList, result);
+      //Assert
+      Assert.Equal(testList, result);
     }
 //==========================================================
     [Fact]
     public void Test_Save_AssignsIdToObject()
     {
-    //Arrange
-    Cuisine testCuisine = new Cuisine("Italian", 1);
+      //Arrange
+      Cuisine testCuisine = new Cuisine("Italian");
 
-    //Act
-    testCuisine.Save();
-    Cuisine savedCuisine = Cuisine.GetAll()[0];
+      //Act
+      testCuisine.Save();
+      Cuisine savedCuisine = Cuisine.GetAll()[0];
 
-    int result = savedCuisine.GetId();
-    int testId = testCuisine.GetId();
+      int result = savedCuisine.GetId();
+      int testId = testCuisine.GetId();
 
-    //Assert
-    Assert.Equal(testId, result);
+      //Assert
+      Assert.Equal(testId, result);
     }
 //==========================================================
     [Fact]
     public void Find_FindsTaskInDatabase_True()
     {
-    //Arrange
-    Cuisine testCuisine = new Cuisine("Italian", 1);
-    testCuisine.Save();
+      //Arrange
+      Cuisine testCuisine = new Cuisine("Italian");
+      testCuisine.Save();
 
-    //Act
-    Cuisine foundCuisine = Cuisine.Find(testCuisine.GetId());
+      //Act
+      Cuisine foundCuisine = Cuisine.Find(testCuisine.GetId());
 
-    //Assert
-    Assert.Equal(testCuisine, foundCuisine);
+      //Assert
+      Assert.Equal(testCuisine, foundCuisine);
     }
+//==========================================================
+    // [Fact]
+    // public void GetCuisine_RetrievesAllCuisineWithRestaurant()
+    // {
+    //   Restaurant testRestaurant = new Restaurant("Pastini");
+    //   testRestaurant.Save();
+    //
+    //   Cuisine firstCuisine = new Cuisine("Italian", testRestaurant.GetId());
+    //   firstCuisine.Save();
+    //   Cuisine secondCuisine = new Cuisine("Mexican")
+    // }
 //==========================================================
     public void Dispose()
     {
-     Cuisine.DeleteAll();
+      Cuisine.DeleteAll();
     }
 //==========================================================
   }
