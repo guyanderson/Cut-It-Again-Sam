@@ -9,6 +9,7 @@ using Restaurant_Object;
 
 namespace CuisineTest_Test
 {
+  [Collection("BestRestaurants")]
   public class CuisineTest : IDisposable
   {
     public CuisineTest()
@@ -82,27 +83,28 @@ namespace CuisineTest_Test
       //Assert
       Assert.Equal(testCuisine, foundCuisine);
     }
-//==========================================================
-    // [Fact]
-    // public void Test_GetRestaurant_RetrievesAllRestaurantWithCuisine()
-    // {
-    //   Cuisine testCuisine = new Cuisine("Italian");
-    //   testCuisine.Save();
-    //
-    //   Restaurant firstRestaurant = new Restaurant("Pastini", testCuisine.GetId());
-    //   firstRestaurant.Save();
-    //   Restaurant secondRestaurant = new Restaurant("Azteca", testCuisine.GetId());
-    //   secondRestaurant.Save();
-    //
-    //
-    //   List<Restaurant> testRestaurantList = new List<Restaurant> {firstRestaurant, secondRestaurant};
-    //   List<Restaurant> resultRestaurantList = testCuisine.GetRestaurant();
-    //   Assert.Equal(testRestaurantList, resultRestaurantList);
-    // }
+// //==========================================================
+    [Fact]
+    public void Test_GetRestaurant_RetrievesAllRestaurantWithCuisine()
+    {
+      Cuisine testCuisine = new Cuisine("Italian");
+      testCuisine.Save();
+
+      Restaurant firstRestaurant = new Restaurant("Pastini", testCuisine.GetId());
+      firstRestaurant.Save();
+      Restaurant secondRestaurant = new Restaurant("Azteca", testCuisine.GetId());
+      secondRestaurant.Save();
+
+
+      List<Restaurant> testRestaurantList = new List<Restaurant> {firstRestaurant, secondRestaurant};
+      List<Restaurant> resultRestaurantList = testCuisine.GetRestaurant();
+      Assert.Equal(testRestaurantList, resultRestaurantList);
+    }
 //==========================================================
     public void Dispose()
     {
       Cuisine.DeleteAll();
+      Restaurant.DeleteAll();
     }
 //==========================================================
   }

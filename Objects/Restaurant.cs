@@ -73,8 +73,8 @@ namespace Restaurant_Object
       {
         int restaurantId = rdr.GetInt32(0);
         string restaurantName = rdr.GetString(1);
-        int restaurantCuisineID = rdr.GetInt32(2);
-        Restaurant newRestaurant = new Restaurant(restaurantName, restaurantId, restaurantCuisineID);
+        int restaurantCuisineId = rdr.GetInt32(2);
+        Restaurant newRestaurant = new Restaurant(restaurantName, restaurantCuisineId, restaurantId);
         allRestaurant.Add(newRestaurant);
       }
 
@@ -95,14 +95,14 @@ namespace Restaurant_Object
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO restaurantTable (name, cuisine_id) OUTPUT INSERTED.id VALUES (@RestaurantName, @RestaurantCuisineID);", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO restaurantTable (name, cuisine_id) OUTPUT INSERTED.id VALUES (@RestaurantName, @RestaurantCuisineId);", conn);
 
       SqlParameter nameParameter = new SqlParameter();
       nameParameter.ParameterName = "@RestaurantName";
       nameParameter.Value = this.GetName();
 
       SqlParameter cuisineIdParameter = new SqlParameter();
-      cuisineIdParameter.ParameterName = "@RestaurantCuisineID";
+      cuisineIdParameter.ParameterName = "@RestaurantCuisineId";
       cuisineIdParameter.Value = this.GetCuisineId();
 
       cmd.Parameters.Add(nameParameter);
@@ -114,6 +114,7 @@ namespace Restaurant_Object
       {
         this._id = rdr.GetInt32(0);
       }
+      Console.WriteLine(this.GetId());
       if (rdr != null)
       {
         rdr.Close();
@@ -148,15 +149,15 @@ namespace Restaurant_Object
 
       int foundRestaurantId = 0;
       string foundRestaurantName = null;
-      int foundRestaurantCuisineID = 0;
+      int foundRestaurantCuisineId = 0;
 
       while(rdr.Read())
       {
         foundRestaurantId = rdr.GetInt32(0);
         foundRestaurantName = rdr.GetString(1);
-        foundRestaurantCuisineID = rdr.GetInt32(2);
+        foundRestaurantCuisineId = rdr.GetInt32(2);
       }
-      Restaurant foundRestaurant = new Restaurant(foundRestaurantName, foundRestaurantId, foundRestaurantCuisineID);
+      Restaurant foundRestaurant = new Restaurant(foundRestaurantName, foundRestaurantCuisineId, foundRestaurantId);
 
       if (rdr != null)
       {

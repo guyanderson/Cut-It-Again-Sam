@@ -160,13 +160,14 @@ namespace Cuisine_Object
       cmd.Parameters.Add(cuisineIdParameter);
       SqlDataReader rdr = cmd.ExecuteReader();
 
-      List<Restaurant>  restaurant = new List<Restaurant> {};
+      List<Restaurant> restaurant = new List<Restaurant> {};
       while(rdr.Read())
       {
         int restaurantId = rdr.GetInt32(0);
         string restaurantName = rdr.GetString(1);
         int restaurantCuisineId = rdr.GetInt32(2);
-        Restaurant newRestaurant = new Restaurant(restaurantName, restaurantId, restaurantCuisineId);
+        Restaurant newRestaurant = new Restaurant(restaurantName, restaurantCuisineId, restaurantId);
+        restaurant.Add(newRestaurant);
       }
       if (rdr != null)
       {
