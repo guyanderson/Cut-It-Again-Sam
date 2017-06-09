@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using Client_Object;
+//using Client_Object;
 using Hair_salon;
 using Stylist_Object;
 
@@ -18,12 +18,17 @@ namespace Stylist_Test
     }
 //===========================================================
     [Fact]
-    public void GetAll_DatabaseEmptyAtFirst_True()
+    public void GetAll_TestDatabaseEmpty_True()
     {
       int result = Stylist.GetAll().Count;
 
       Assert.Equal(0, result);
     }
 //===========================================================
+    public void Dispose()
+    {
+      Stylist.DeleteAll();
+    }
+//==========================================================
   }
 }
