@@ -135,7 +135,7 @@ namespace Cuisine_Object
         foundCuisineId = rdr.GetInt32(0);
         foundCuisineName = rdr.GetString(1);
       }
-      Cuisine foundCuisine = new Cuisine(foundCuisineName);
+      Cuisine foundCuisine = new Cuisine(foundCuisineName, foundCuisineId);
 
       if (rdr != null)
       {
