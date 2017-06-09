@@ -4,9 +4,8 @@ using Microsoft.AspNet.Builder;
 using Nancy;
 using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
-using System.Data.SqlClient;
 
-namespace Hair_salon
+namespace hair_salon
 {
   public class Startup
   {
@@ -41,6 +40,6 @@ namespace Hair_salon
   }
   public static class DBConfiguration
   {
-    public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=hair_salon;Integrated Security=SSPI;";
+      public static string ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=hair_salon;Integrated Security=SSPI;";
   }
 }

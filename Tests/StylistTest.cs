@@ -4,12 +4,12 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 //using Client_Object;
-using Hair_salon;
+using hair_salon;
 using Stylist_Object;
 
 namespace Stylist_Test
 {
-  [Collection("hair_salon")]
+  [Collection("Stylist_Test")]
   public class StylistTest : IDisposable
   {
     public StylistTest()
