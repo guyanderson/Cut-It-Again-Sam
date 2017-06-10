@@ -34,6 +34,19 @@ namespace Client_Test
       Assert.Equal(firstClient, secondClient);
     }
 //==========================================================
+    [Fact]
+    public void Save_SavesToDatabase_True()
+    {
+
+      Client testClient = new Client("Bob", 1);
+
+      testClient.Save();
+      List<Client> result = Client.GetAll();
+      List<Client> testList = new List<Client>{testClient};
+
+      Assert.Equal(testList, result);
+    }
+//==========================================================
     public void Dispose()
     {
       Stylist.DeleteAll();
