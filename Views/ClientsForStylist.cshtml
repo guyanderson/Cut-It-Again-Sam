@@ -1,0 +1,24 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h2>Here are all the clients for @Model["stylist"].GetName():</h2>
+<br>
+
+@if (@Model["client"].Count == 0)
+{
+  <p>No clients have been added yet!</p>
+}
+else
+{
+  <ol>
+    @foreach (var client in @Model["client"])
+    {
+      <li>@client.GetName()</li>
+    }
+  </ol>
+}
+<br>
+<p><a href="/client/new">Add a new client</a></p>
+<br>
+<p><a href="/">Return to Main Page</a></p>

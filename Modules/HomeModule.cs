@@ -48,6 +48,15 @@ namespace Salon_Modules
         return View["success.cshtml"];
       };
 //=======================================================
+      Get["/stylist/{id}"] = parameters => {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Stylist SelectedStylist = Stylist.Find(parameters.id);
+        List<Client> StylistClient = SelectedStylist.GetClient();
+        model.Add("stylist", SelectedStylist);
+        model.Add("client", StylistClient);
+        return View["ClientsForStylist.cshtml", model];
+      };
+//=======================================================
     }
   }
 }
