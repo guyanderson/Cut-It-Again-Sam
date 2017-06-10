@@ -45,7 +45,7 @@ namespace Stylist_Object
       {
         int stylistId = rdr.GetInt32(1);
         string stylistName = rdr.GetString(0);
-        Stylist newStylist = new Stylist(stylistName);
+        Stylist newStylist = new Stylist(stylistName, stylistId);
         allStylist.Add(newStylist);
       }
 

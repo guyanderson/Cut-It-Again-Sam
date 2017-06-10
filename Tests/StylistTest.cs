@@ -46,8 +46,25 @@ namespace Stylist_Test
       Assert.Equal(testList, result);
     }
 //==========================================================
+    [Fact]
+    public void GetId_AssignsIdToStylist_True()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("Sam");
+
+      //Act
+      testStylist.Save();
+      Stylist savedStylist = Stylist.GetAll()[0];
+
+      int result = savedStylist.GetId();
+      int testId = testStylist.GetId();
+
+      //Assert
+      Assert.Equal(testId, result);
+    }
+//==========================================================
     public void Dispose()
-    {test
+    {
       Stylist.DeleteAll();
     }
 //==========================================================
