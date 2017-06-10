@@ -22,6 +22,11 @@ namespace Salon_Modules
       return View["stylist.cshtml", AllStylist];
     };
 //=======================================================
+Get["/client"] = _ => {
+  List<Client> AllClient = Client.GetAll();
+  return View["client.cshtml", AllClient];
+};
+//=======================================================
 
     }
   }
