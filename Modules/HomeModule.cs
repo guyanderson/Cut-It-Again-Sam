@@ -62,6 +62,11 @@ namespace Salon_Modules
         return View["cleared.cshtml"];
       };
 //=======================================================
+      Post["/stylist/delete"] = _ => {
+        Stylist.DeleteAll();
+        return View["cleared.cshtml"];
+      };
+//=======================================================
     }
   }
 }

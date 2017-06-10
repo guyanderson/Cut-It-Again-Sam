@@ -15,18 +15,20 @@
 else
 {
   <h1>Here is your list of clients:</h1>
+  <br>
   <ul>
     @foreach (var client in Model)
     {
       <li>@client.GetName()</li>
     }
   </ul>
-  <br>
-  <form action="/client/delete" method="post">
-    <button type="submit">Clear all clients</button>
-  </form>
 }
 <br>
 <p><a href="/client/new">Add a new client</a></p>
+<br>
+<form action="/client/delete" method="post">
+  <button type="submit">Clear all clients</button>
+</form>
+<br>
 <br>
 <p><a href="/">Return home</a></p>
