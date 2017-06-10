@@ -5,7 +5,7 @@ using Nancy;
 using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
 
-namespace hair_salon
+namespace HairSalon
 {
   public class Startup
   {

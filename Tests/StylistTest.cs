@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 //using Client_Object;
-using hair_salon;
+using HairSalon;
 using Stylist_Object;
 
 namespace Stylist_Test
