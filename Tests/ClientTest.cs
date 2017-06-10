@@ -47,6 +47,17 @@ namespace Client_Test
       Assert.Equal(testList, result);
     }
 //==========================================================
+    [Fact]
+    public void Find_FindsClientInDatabase_True()
+    {
+      Client testClient = new Client("Bob", 1);
+      testClient.Save();
+
+      Client foundClient = Client.Find(testClient.GetId());
+
+      Assert.Equal(testClient, foundClient);
+    }
+//==========================================================
     public void Dispose()
     {
       Stylist.DeleteAll();
