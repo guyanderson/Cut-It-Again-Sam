@@ -17,3 +17,11 @@ namespace Stylist_Test
      DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=hair_salon_test;Integrated Security=SSPI;";
     }
 //===========================================================
+    [Fact]
+    public void GetAll_TestDatabaseEmpty_True()
+    {
+      int result = Client.GetAll().Count;
+
+      Assert.Equal(0, result);
+    }
+//===========================================================
