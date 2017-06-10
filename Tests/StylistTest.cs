@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using HairSalon;
 using Stylist_Object;
+using Client_Object;
 
 namespace Stylist_Test
 {
@@ -73,6 +74,7 @@ namespace Stylist_Test
     public void Dispose()
     {
       Stylist.DeleteAll();
+      Client.DeleteAll();
     }
 //==========================================================
   }

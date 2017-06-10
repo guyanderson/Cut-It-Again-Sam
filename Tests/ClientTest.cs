@@ -7,7 +7,7 @@ using HairSalon;
 using Stylist_Object;
 using Client_Object;
 
-namespace Stylist_Test
+namespace Client_Test
 {
   [Collection("Stylist_Test")]
   public class StylistTest : IDisposable
@@ -25,3 +25,11 @@ namespace Stylist_Test
       Assert.Equal(0, result);
     }
 //===========================================================
+    public void Dispose()
+    {
+      Stylist.DeleteAll();
+      Client.DeleteAll();
+    }
+//==========================================================
+  }
+}
