@@ -71,6 +71,23 @@ namespace Stylist_Test
       Assert.Equal(testStylist, foundStylist);
     }
 //==========================================================
+    [Fact]
+    public void GetClient_RetrievesAllClientWithStylist_True()
+    {
+      Stylist testStylist = new Stylist("Sam");
+      testStylist.Save();
+
+      Client firstClient = new Client("Bob", testStylist.GetId());
+      firstClient.Save();
+      Client secondClient = new Client("Bobby", testStylist.GetId());
+      secondClient.Save();
+
+
+      List<Client> testClientList = new List<Client> {firstClient, secondClient};
+      List<Client> resultClientList = testStylist.GetClient();
+      Assert.Equal(testClientList, resultClientList);
+    }
+//==========================================================
     public void Dispose()
     {
       Stylist.DeleteAll();

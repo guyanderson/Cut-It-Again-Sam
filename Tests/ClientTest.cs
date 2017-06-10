@@ -58,6 +58,20 @@ namespace Client_Test
       Assert.Equal(testClient, foundClient);
     }
 //==========================================================
+    [Fact]
+    public void GetId_AssignsIdToClient_True()
+    {
+      Client testClient = new Client("Bob", 1);
+
+      testClient.Save();
+      Client savedClient = Client.GetAll()[0];
+
+      int result = savedClient.GetId();
+      int testId = testClient.GetId();
+
+      Assert.Equal(testId, result);
+    }
+//==========================================================
     public void Dispose()
     {
       Stylist.DeleteAll();
