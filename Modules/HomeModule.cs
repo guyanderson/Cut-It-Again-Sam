@@ -13,9 +13,14 @@ namespace Salon_Modules
     public HomeModule()
     {
 //=======================================================
-Get["/"] = _ => {
-  return View["index.cshtml"];
-};
+    Get["/"] = _ => {
+      return View["index.cshtml"];
+    };
+//=======================================================
+    Get["/stylist"] = _ => {
+      List<Stylist> AllStylist = Stylist.GetAll();
+      return View["stylist.cshtml", AllStylist];
+    };
 //=======================================================
 
     }
