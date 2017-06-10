@@ -28,12 +28,22 @@ namespace Stylist_Test
     [Fact]
     public void Equals_OverrideReturnsTrueIfNamesAreTheSame_True()
     {
-      //Arrange, Act
       Stylist firstStylist = new Stylist("Sam");
       Stylist secondStylist = new Stylist("Sam");
 
-      //Assert
       Assert.Equal(firstStylist, secondStylist);
+    }
+//==========================================================
+    [Fact]
+    public void Save_SavesToDatabase_True()
+    {
+      Stylist testStylist = new Stylist("Sam");
+
+      testStylist.Save();
+      List<Stylist> result = Stylist.GetAll();
+      List<Stylist> testList = new List<Stylist>{testStylist};
+
+      Assert.Equal(testList, result);
     }
 //==========================================================
     public void Dispose()

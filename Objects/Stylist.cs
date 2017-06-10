@@ -43,9 +43,9 @@ namespace Stylist_Object
 
       while(rdr.Read())
       {
-        int stylistId = rdr.GetInt32(0);
-        string stylistName = rdr.GetString(1);
-        Stylist newStylist = new Stylist(stylistName, stylistId);
+        int stylistId = rdr.GetInt32(1);
+        string stylistName = rdr.GetString(0);
+        Stylist newStylist = new Stylist(stylistName);
         allStylist.Add(newStylist);
       }
 
@@ -73,18 +73,17 @@ namespace Stylist_Object
 //============================================
     public override bool Equals(System.Object otherStylist)
     {
-      // if (!(otherStylist is Stylist))
-      // {
-      //   return false;
-      // }
-      // else
-      // {
-      //   Stylist newStylist = (Stylist) otherStylist;
-      //   bool idEquality = (this.GetId() == newStylist.GetId());
-      //   bool nameEquality = (this.GetName() == newStylist.GetName());
-      //   return (nameEquality);
-      return false;
-      //}
+      if (!(otherStylist is Stylist))
+      {
+        return false;
+      }
+      else
+      {
+        Stylist newStylist = (Stylist) otherStylist;
+        bool idEquality = (this.GetId() == newStylist.GetId());
+        bool nameEquality = (this.GetName() == newStylist.GetName());
+        return (nameEquality);
+      }
     }
 //============================================
     public void Save()
