@@ -31,7 +31,7 @@ namespace Client_Object
 //===========================================
     public void SetName(string newName)
     {
-      _name =newName;
+      _name = newName;
     }
 //============================================
     public int GetStylistId()
@@ -170,6 +170,5 @@ namespace Client_Object
       return foundClient;
     }
 //==========================================================
-
   }
 }
