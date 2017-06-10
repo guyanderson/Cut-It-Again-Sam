@@ -114,5 +114,38 @@ namespace Stylist_Object
       }
     }
 //============================================
+    public static Stylist Find(int id)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM stylists WHERE id = @stylistId;", conn);
+      SqlParameter stylistIdParameter = new SqlParameter();
+      stylistIdParameter.ParameterName = "@stylistId";
+      stylistIdParameter.Value = id.ToString();
+      cmd.Parameters.Add(stylistIdParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      int foundStylistId = 0;
+      string foundStylistName = null;
+
+      while(rdr.Read())
+      {
+        foundStylistId = rdr.GetInt32(1);
+        foundStylistName = rdr.GetString(0);
+      }
+      Stylist foundStylist = new Stylist(foundStylistName, foundStylistId);
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+      if (conn != null)
+      {
+        conn.Close();
+      }
+      return foundStylist;
+    }
+//============================================
   }
 }
