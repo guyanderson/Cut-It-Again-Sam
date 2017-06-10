@@ -25,6 +25,17 @@ namespace Stylist_Test
       Assert.Equal(0, result);
     }
 //===========================================================
+    [Fact]
+    public void Equals_OverrideReturnsTrueIfNamesAreTheSame_True()
+    {
+      //Arrange, Act
+      Stylist firstStylist = new Stylist("Sam");
+      Stylist secondStylist = new Stylist("Sam");
+
+      //Assert
+      Assert.Equal(firstStylist, secondStylist);
+    }
+//==========================================================
     public void Dispose()
     {
       Stylist.DeleteAll();
