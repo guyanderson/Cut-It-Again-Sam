@@ -37,6 +37,17 @@ namespace Salon_Modules
         return View["success.cshtml"];
       };
 //=======================================================
+      Get["/client/new"] = _ => {
+         List<Stylist> AllStylist = Stylist.GetAll();
+         return View["client_form.cshtml", AllStylist];
+       };
+ //=======================================================
+       Post["/client/new"] = _ => {
+        Client newClient = new Client(Request.Form["client-name"], Request.Form["stylistid"]);
+        newClient.Save();
+        return View["success.cshtml"];
+      };
+//=======================================================
     }
   }
 }
