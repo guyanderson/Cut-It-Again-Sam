@@ -13,21 +13,30 @@ namespace Salon_Modules
     public HomeModule()
     {
 //=======================================================
-    Get["/"] = _ => {
-      return View["index.cshtml"];
-    };
+      Get["/"] = _ => {
+        return View["index.cshtml"];
+      };
 //=======================================================
-    Get["/stylist"] = _ => {
-      List<Stylist> AllStylist = Stylist.GetAll();
-      return View["stylist.cshtml", AllStylist];
-    };
+      Get["/stylist"] = _ => {
+        List<Stylist> AllStylist = Stylist.GetAll();
+        return View["stylist.cshtml", AllStylist];
+      };
 //=======================================================
-Get["/client"] = _ => {
-  List<Client> AllClient = Client.GetAll();
-  return View["client.cshtml", AllClient];
-};
+      Get["/client"] = _ => {
+        List<Client> AllClient = Client.GetAll();
+        return View["client.cshtml", AllClient];
+      };
 //=======================================================
-
+      Get["/stylist/new"] = _ => {
+         return View["stylist_form.cshtml"];
+       };
+  //=======================================================
+      Post["/stylist/new"] = _ => {
+        Stylist newStylist = new Stylist(Request.Form["stylist-name"]);
+        newStylist.Save();
+        return View["success.cshtml"];
+      };
+//=======================================================
     }
   }
 }
