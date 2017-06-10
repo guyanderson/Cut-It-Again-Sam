@@ -25,6 +25,15 @@ namespace Client_Test
       Assert.Equal(0, result);
     }
 //===========================================================
+    [Fact]
+    public void Equals_OverrideReturnsTrueIfNamesAreTheSame_True()
+    {
+      Client firstClient = new Client("Bob", 1);
+      Client secondClient = new Client("Bob", 1);
+
+      Assert.Equal(firstClient, secondClient);
+    }
+//==========================================================
     public void Dispose()
     {
       Stylist.DeleteAll();
