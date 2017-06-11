@@ -72,6 +72,23 @@ namespace Client_Test
       Assert.Equal(testId, result);
     }
 //==========================================================
+    [Fact]
+    public void Update_UpdatesClientInDatabase_True()
+    {
+      string name = "Bob";
+      int StylistId = 1;
+      int id = 1;
+      Client testClient = new Client(name, StylistId, id);
+      testClient.Save();
+      string newName = "Bobby";
+
+      testClient.Update(newName);
+
+      string result = testClient.GetName();
+
+      Assert.Equal(newName, result);
+    }
+//==========================================================
     public void Dispose()
     {
       Stylist.DeleteAll();
