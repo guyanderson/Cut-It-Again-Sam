@@ -67,6 +67,17 @@ namespace Salon_Modules
         return View["cleared.cshtml"];
       };
 //=======================================================
+      Get["client/update/{id}"] = parameters => {
+        Client SelectedClient = Client.Find(parameters.id);
+        return View["client_update.cshtml", SelectedClient];
+      };
+//=======================================================
+      Patch["client/update/{id}"] = parameters => {
+        Client SelectedClient = Client.Find(parameters.id);
+        SelectedClient.Update(Request.Form["client-name"]);
+        return View["success.cshtml"];
+      };
+//=======================================================
     }
   }
 }
