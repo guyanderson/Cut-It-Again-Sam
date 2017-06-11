@@ -1,6 +1,12 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+<br>
+<br>
 <h1>Do you want to update a client?</h1>
 <br>
 <h2>Edit Client: @Model.GetName()</h2>
+<br>
 <form action="/client/update/@Model.GetId()" method="post">
   <input type="hidden" name="_method" value="PATCH">
   <input name="client-id" type="hidden" value="@Model.GetId()">
@@ -8,4 +14,5 @@
   <input id="client-name" name="client-name" type="text">
   <button type="submit">Submit</button>
 </form>
+<br>
 <h4><a href="/">Return home</a></h4>

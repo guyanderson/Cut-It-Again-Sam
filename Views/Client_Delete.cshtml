@@ -1,0 +1,16 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<br>
+<br>
+<h1>Delete client.</h1>
+<br>
+<h2>Are you sure you want to delete @Model.GetName() from your client list?</h2>
+<br>
+<form action="/client/delete/@Model.GetId()" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit">Delete</button>
+</form>
+<br>
+<p><a href="/">Back home</a></p>

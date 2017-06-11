@@ -78,6 +78,16 @@ namespace Salon_Modules
         return View["success.cshtml"];
       };
 //=======================================================
+      Get["client/delete/{id}"] = parameters => {
+        Client SelectedClient = Client.Find(parameters.id);
+        return View["client_delete.cshtml", SelectedClient];
+      };
+//=======================================================
+      Delete["client/delete/{id}"] = parameters => {
+        Client SelectedClient = Client.Find(parameters.id);
+        SelectedClient.Delete();
+        return View["success.cshtml"];
+      };
     }
   }
 }
