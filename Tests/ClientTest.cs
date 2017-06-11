@@ -95,5 +95,24 @@ namespace Client_Test
       Client.DeleteAll();
     }
 //==========================================================
+    [Fact]
+    public void Delete_DeletesClientFromDatabase_True()
+    {
+      Client testClient1 = new Client("Bob", 1, 1);
+      testClient1.Save();
+
+
+      Client testClient2 = new Client("Bobby", 2, 1);
+      testClient2.Save();
+
+      testClient1.Delete();
+
+      List<Client> resultClients = Client.GetAll();
+      List<Client> testClientList = new List<Client> {testClient2};
+
+
+      Assert.Equal(testClientList, resultClients);
+    }
+//==========================================================
   }
 }
